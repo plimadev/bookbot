@@ -1,13 +1,10 @@
 path_to_file = "books/frankenstein.txt"
 
 def main():
-
-
-    
-
+   
     with open(path_to_file) as f:
         file_contents = f.read()
-        #print(file_contents)
+        
     
     word_count = len(file_contents.split())
     print(word_count)
@@ -38,7 +35,22 @@ def character_counter(path_to_file):
     
     char_count[' '] += file_contents.count(' ')
 
-    print(char_count)
+    return char_count
+
+
+def print_report():
+    dict = character_counter(path_to_file)
+
+    list = [{key: value} for key, value in dict.items()]
+    
+    for dictionary in list:
+        for key, value in dictionary.items():
+            if key.isalpha():  
+                print(f"The '{key}' character was found '{value}' times")
+    
+
+    
+
     
 
              
@@ -48,3 +60,4 @@ def character_counter(path_to_file):
         
 main()
 character_counter(path_to_file)
+print_report()
